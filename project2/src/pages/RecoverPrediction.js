@@ -44,6 +44,11 @@ const RecoverPrediction = () => {
     fetchOptions();
   }, []);
 
+  const extractNeighbourhoodCode = (neighbourhoodName) => {
+    const match = neighbourhoodName.match(/\((\d+)\)$/);
+    return match ? match[1] : "";
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -78,6 +83,11 @@ const RecoverPrediction = () => {
         ...prev,
         [name]: value,
       };
+
+      // If neighbourhood name changes, update the code
+      if (name === "NEIGHBOURHOOD_140" && value) {
+        newData.HOOD_140 = extractNeighbourhoodCode(value);
+      }
 
       // If occurrence date changes, calculate DOW and DOY
       if (name === "OCC_DATE" && value) {
@@ -246,29 +256,13 @@ const RecoverPrediction = () => {
           </div>
 
           <div className="form-group">
-            <label>Neighborhood Code:</label>
-            <select
-              name="HOOD_140"
-              value={formData.HOOD_140}
-              onChange={handleChange}
-            >
-              <option value="">Select neighborhood code</option>
-              {options?.HOOD_140?.map((code) => (
-                <option key={code} value={code}>
-                  {code}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <div className="form-group">
-            <label>Neighborhood Name:</label>
+            <label>Neighbourhood Name:</label>
             <select
               name="NEIGHBOURHOOD_140"
               value={formData.NEIGHBOURHOOD_140}
               onChange={handleChange}
             >
-              <option value="">Select neighborhood</option>
+              <option value="">Select neighbourhood</option>
               {options?.NEIGHBOURHOOD_140?.map((name) => (
                 <option key={name} value={name}>
                   {name}
