@@ -19,6 +19,32 @@ const BIKE_TYPE_MAPPING = {
   'Type Unknown': 'UNKNOWN'
 };
 
+const COLOR_MAPPING = {
+  'Beige': 'BGE',
+  'Black': 'BLK',
+  'Blue': 'BLU',
+  'Dark Blue': 'DBL',
+  'Light Blue': 'LBL',
+  'Bronze': 'BRZ',
+  'Brown': 'BRN',
+  'Copper': 'CPR',
+  'Gold': 'GLD',
+  'Green': 'GRN',
+  'Light Green': 'LGR',
+  'Grey': 'GRY',
+  'Maroon': 'MRN',
+  'Orange': 'ONG',
+  'Pink': 'PNK',
+  'Purple': 'PLE',
+  'Red': 'RED',
+  'Silver': 'SIL',
+  'Tan': 'TAN',
+  'Turquoise': 'TRQ',
+  'White': 'WHI',
+  'Yellow': 'YEL',
+  '': '' // for no color
+};
+
 const RecoverPrediction = () => {
   const [formData, setFormData] = useState({
     BIKE_MAKE: "",
@@ -37,6 +63,9 @@ const RecoverPrediction = () => {
     HOOD_140: "",
     NEIGHBOURHOOD_140: "",
   });
+
+  const [primaryColor, setPrimaryColor] = useState('');
+  const [secondaryColor, setSecondaryColor] = useState('');
 
   const [options, setOptions] = useState(null);
   const [prediction, setPrediction] = useState(null);
@@ -64,6 +93,12 @@ const RecoverPrediction = () => {
   const extractNeighbourhoodCode = (neighbourhoodName) => {
     const match = neighbourhoodName.match(/\((\d+)\)$/);
     return match ? match[1] : "";
+  };
+
+  const combineColorCodes = (primary, secondary) => {
+    if (!primary) primary = '';
+    if (!secondary) return COLOR_MAPPING[primary];
+    return `${COLOR_MAPPING[primary]}${COLOR_MAPPING[secondary]}`;
   };
 
   const handleSubmit = async (e) => {
@@ -95,6 +130,25 @@ const RecoverPrediction = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
+    if (name === 'primaryColor') {
+      setPrimaryColor(value);
+      setFormData(prev => ({
+        ...prev,
+        BIKE_COLOUR: combineColorCodes(value, secondaryColor)
+      }));
+      return;
+    }
+
+    if (name === 'secondaryColor') {
+      setSecondaryColor(value);
+      setFormData(prev => ({
+        ...prev,
+        BIKE_COLOUR: combineColorCodes(primaryColor, value)
+      }));
+      return;
+    }
+
     setFormData((prev) => {
       const newData = {
         ...prev,
@@ -188,18 +242,32 @@ const RecoverPrediction = () => {
 
           <div className="form-group">
             <label>Bike Colour:</label>
-            <select
-              name="BIKE_COLOUR"
-              value={formData.BIKE_COLOUR}
-              onChange={handleChange}
-            >
-              <option value="">Select a color</option>
-              {options?.BIKE_COLOUR?.map((color) => (
-                <option key={color} value={color}>
-                  {color}
-                </option>
-              ))}
-            </select>
+            <div className="color-selects">
+              <select
+                name="primaryColor"
+                value={primaryColor}
+                onChange={handleChange}
+              >
+                <option value="">Primary Color</option>
+                {Object.keys(COLOR_MAPPING).map((color) => (
+                  <option key={color} value={color}>
+                    {color}
+                  </option>
+                ))}
+              </select>
+              <select
+                name="secondaryColor"
+                value={secondaryColor}
+                onChange={handleChange}
+              >
+                <option value="">Secondary Color (Optional)</option>
+                {Object.keys(COLOR_MAPPING).map((color) => (
+                  <option key={color} value={color}>
+                    {color}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
 
           <div className="form-group">

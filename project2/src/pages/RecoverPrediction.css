@@ -116,4 +116,13 @@ button:disabled {
     background: #ffebee;
     border-radius: 4px;
     margin-bottom: 1rem;
-} 
+}
+
+.color-selects {
+    display: flex;
+    gap: 10px;
+}
+
+.color-selects select {
+    flex: 1;
+}
