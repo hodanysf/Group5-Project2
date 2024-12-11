@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { API_BASE_URL } from "../config";
 import "./RecoverPrediction.css";
 
 const RecoverPrediction = () => {
@@ -29,7 +30,7 @@ const RecoverPrediction = () => {
   useEffect(() => {
     const fetchOptions = async () => {
       try {
-        const response = await fetch("http://localhost:5000/options");
+        const response = await fetch(API_BASE_URL + "/options");
         if (!response.ok) {
           throw new Error("Failed to fetch options");
         }
@@ -49,7 +50,7 @@ const RecoverPrediction = () => {
     setError(null);
 
     try {
-      const response = await fetch("http://localhost:5000/predict", {
+      const response = await fetch(API_BASE_URL + "/predict", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
