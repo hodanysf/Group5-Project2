@@ -9,9 +9,9 @@ const AboutUs = () => {
       image: "https://via.placeholder.com/200x200",
     },
     {
-      id: "ID-002",
-      name: "Gab ",
-      image: "https://via.placeholder.com/200x200",
+      id: "301293488",
+      name: "Gabriel Normand ",
+      image: "/images/gabriel.jpg",
     },
     {
       id: "ID-003",
