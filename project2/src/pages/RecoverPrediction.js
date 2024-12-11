@@ -288,7 +288,7 @@ const RecoverPrediction = () => {
               onChange={handleChange}
             >
               <option value="">Select premises type</option>
-              {options?.PREMISES_TYPE?.map((type) => (
+              {options?.PREMISES_TYPE?.sort().map((type) => (
                 <option key={type} value={type}>
                   {type}
                 </option>
@@ -304,7 +304,7 @@ const RecoverPrediction = () => {
               onChange={handleChange}
             >
               <option value="">Select location type</option>
-              {options?.LOCATION_TYPE?.map((type) => (
+              {options?.LOCATION_TYPE?.sort().map((type) => (
                 <option key={type} value={type}>
                   {type}
                 </option>
@@ -353,7 +353,7 @@ const RecoverPrediction = () => {
               onChange={handleChange}
             >
               <option value="">Select neighbourhood</option>
-              {options?.NEIGHBOURHOOD_140?.map((name) => (
+              {options?.NEIGHBOURHOOD_140?.sort().map((name) => (
                 <option key={name} value={name}>
                   {name}
                 </option>
