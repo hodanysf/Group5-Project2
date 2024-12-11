@@ -2,11 +2,28 @@ import React, { useState, useEffect } from "react";
 import { API_BASE_URL } from "../config";
 import "./RecoverPrediction.css";
 
+const BIKE_TYPE_MAPPING = {
+  'BMX': 'BM',
+  'Electric': 'EL',
+  'Folding': 'FO',
+  'Mountain': 'MT',
+  'Other': 'OT',
+  'Racer': 'RC',
+  'Recumbant': 'RE',
+  'Regular': 'RG',
+  'Scooter': 'SC',
+  'Tandem': 'TA',
+  'Touring': 'TO',
+  'Tricycle': 'TR',
+  'Unicycle': 'UN',
+  'Type Unknown': 'UNKNOWN'
+};
+
 const RecoverPrediction = () => {
   const [formData, setFormData] = useState({
     BIKE_MAKE: "",
     BIKE_MODEL: "",
-    BIKE_TYPE: "REGULAR",
+    BIKE_TYPE: "RG",
     BIKE_SPEED: 15,
     BIKE_COLOUR: "",
     BIKE_COST: 50,
@@ -81,7 +98,7 @@ const RecoverPrediction = () => {
     setFormData((prev) => {
       const newData = {
         ...prev,
-        [name]: value,
+        [name]: name === 'BIKE_TYPE' ? BIKE_TYPE_MAPPING[value] : value,
       };
 
       // If neighbourhood name changes, update the code
@@ -114,6 +131,11 @@ const RecoverPrediction = () => {
     });
   };
 
+  // Helper function to get friendly name from code
+  const getBikeTypeFriendlyName = (code) => {
+    return Object.keys(BIKE_TYPE_MAPPING).find(key => BIKE_TYPE_MAPPING[key] === code) || '';
+  };
+
   return (
     <div className="recover-prediction">
       <div className="form-section">
@@ -143,10 +165,10 @@ const RecoverPrediction = () => {
             <label>Bike Type:</label>
             <select
               name="BIKE_TYPE"
-              value={formData.BIKE_TYPE}
+              value={getBikeTypeFriendlyName(formData.BIKE_TYPE)}
               onChange={handleChange}
             >
-              {options?.BIKE_TYPE?.map((type) => (
+              {Object.keys(BIKE_TYPE_MAPPING).map((type) => (
                 <option key={type} value={type}>
                   {type}
                 </option>
