@@ -27,7 +27,7 @@ const AboutUs = () => {
     },
     {
       id: "301321662",
-      name: "Nabantia",
+      name: "Nabantia Saha",
       image: "/images/Nabanita.jpg",
     },
   ];
