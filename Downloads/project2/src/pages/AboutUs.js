@@ -1,6 +1,8 @@
 import React from "react";
 import "./AboutUs.css";
 
+
+
 const AboutUs = () => {
   const cards = [
     {
@@ -32,6 +34,13 @@ const AboutUs = () => {
 
   return (
     <div className="about-us">
+      <div className="team-intro">
+  <p>
+    We are a dedicated team of professionals committed to 
+    making a difference in the world through technology and 
+    innovation. Meet our passionate members!
+  </p>
+</div>
       <div className="about-us-header">
         <h1>Our Team</h1>
         <div className="divider"></div>
