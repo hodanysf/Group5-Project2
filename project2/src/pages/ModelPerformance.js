@@ -113,9 +113,9 @@ const ModelPerformance = () => {
         <div className="confusion-matrix">
           <h2>Confusion Matrix</h2>
           <div className="matrix-grid">
-            <div className="matrix-cell header">Predicted ↓ / Actual →</div>
-            <div className="matrix-cell header">Not Recovered</div>
-            <div className="matrix-cell header">Recovered</div>
+            <div className="matrix-cell title">Predicted↓ / Actual→</div>
+            <div className="matrix-cell title">Not Recovered</div>
+            <div className="matrix-cell title">Recovered</div>
             <div className="matrix-cell label">Not Recovered</div>
             <div className="matrix-cell">
               {modelMetrics?.confusion_matrix[0][0]}

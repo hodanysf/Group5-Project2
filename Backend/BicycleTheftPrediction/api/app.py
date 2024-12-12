@@ -526,6 +526,21 @@ def value_analysis():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+@app.route("/api/model-metrics", methods=["GET"])
+def model_metrics():
+    model_name = "random_forest"
+    try:
+        metrics_path = "../models/" + model_name + "_metrics.json"
+        if not os.path.exists(metrics_path):
+            return jsonify({"error": "Model metrics not found"}), 404
+
+        with open(metrics_path, "r") as f:
+            metrics = json.load(f)
+
+        return jsonify(metrics)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)

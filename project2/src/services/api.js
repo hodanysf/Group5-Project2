@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://localhost:5000";
+import { API_BASE_URL } from "../config";
 
 export const api = {
   getTheftsOverTime: async () => {
@@ -62,6 +62,19 @@ export const api = {
       return await response.json();
     } catch (error) {
       console.error("Failed to fetch value analysis:", error);
+      throw error;
+    }
+  },
+
+  getModelMetrics: async () => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/model-metrics`);
+      if (!response.ok) {
+        throw new Error("Failed to fetch model metrics data");
+      }
+      return await response.json();
+    } catch (error) {
+      console.error("Failed to fetch model metrics:", error);
       throw error;
     }
   },
