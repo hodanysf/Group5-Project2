@@ -55,12 +55,18 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="home">
+    <div className="home" style={{
+      background:"#FFFFFF",
+      padding:"150px"
+    }}>
       <div className="home-header">
-        <h1>Data Insights </h1>
+        <h1
+        style={{
+          marginTop:"-30px"
+        }}>Data Insights </h1>
+
         <p className="subtitle">Visualizing and Analyzing Market Trends</p>
         {/* <p>Group 5 - COMP 309-403</p> */}
-        <div className="divider"></div>
       </div>
 
       <div className="dashboard-container">
@@ -74,28 +80,30 @@ const Home = () => {
               Tracking thefts and growth metrics over time
             </p>
           </div>
+          {/* GRAPH */}
           <div className="dashboard-card">
             <div className="graph-section">
-              {loading ? (
-                <div className="loading">Loading graph...</div>
-              ) : error ? (
-                <div className="error">{error}</div>
-              ) : (
-                <img
-                  src={`data:image/png;base64,${graphData}`}
-                  alt="Bicycle Thefts Over Time"
-                  className="graph-image"
-                />
-              )}
+              <img
+              src="/images/thefts_by_year.png"
+              alt="Bicycle Thefts Over Time"
+              className="graph-image"
+              />
             </div>
+
             <div className="description-section">
               <h2>Theft Analysis</h2>
+              {/* DESCRIPTION */}
               <p className="description-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
+              Analysis of theft trends from 2014 to 2018, identifying patterns and growth metrics
+              over time. 
+              <br>
+              </br>
+              <br>
+              </br>By analyzing data over time, we can identify the factors contributing 
+              to increasing theft rates.
               </p>
+
+
               <div className="key-metrics">
                 <div className="metric">
                   <span className="metric-value">
@@ -115,9 +123,10 @@ const Home = () => {
                 </div>
               </div>
             </div>
+
+
           </div>
         </div>
-        <div className="divider" style={{ marginTop: "65px" }}></div>
 
         {/* Card 2 */}
         <div className="card-section">
@@ -153,21 +162,14 @@ const Home = () => {
               </div>
             </div>
             <div className="graph-section">
-              {loading ? (
-                <div className="loading">Loading graph...</div>
-              ) : error ? (
-                <div className="error">{error}</div>
-              ) : (
-                <img
-                  src={`data:image/png;base64,${returnData}`}
-                  alt="Bicycle Return Rate Over Time"
-                  className="graph-image"
-                />
-              )}
+            <img
+              src="/images/bicycleyear.png"
+              alt="Bicycle Thefts Over Time"
+              className="graph-image"
+              />
             </div>
           </div>
         </div>
-        <div className="divider" style={{ marginTop: "65px" }}></div>
 
         {/* Card 3 */}
         <div className="card-section">
@@ -179,18 +181,14 @@ const Home = () => {
           </div>
           <div className="dashboard-card">
             <div className="graph-section">
-              {loading ? (
-                <div className="loading">Loading graph...</div>
-              ) : error ? (
-                <div className="error">{error}</div>
-              ) : (
-                <img
-                  src={`data:image/png;base64,${seasonalData}`}
-                  alt="Seasonal Theft Analysis"
-                  className="graph-image"
-                />
-              )}
+            <img
+              src="/images/thefts_by_season.png"
+              alt="Bicycle Thefts Over Time"
+              className="graph-image"
+              />
+              
             </div>
+
             <div className="description-section">
               <h2>Seasonal Patterns</h2>
               <p className="description-text">
@@ -204,6 +202,7 @@ const Home = () => {
                       ? `${seasonalMetrics.peak_percentage}%`
                       : "..."}
                   </span>
+
                   <span className="metric-label">
                     Peak Season (
                     {seasonalMetrics ? seasonalMetrics.peak_season : "..."})
@@ -221,7 +220,6 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="divider" style={{ marginTop: "65px" }}></div>
 
         {/* Card 4 */}
         <div className="card-section">
@@ -260,21 +258,15 @@ const Home = () => {
               </div>
             </div>
             <div className="graph-section">
-              {loading ? (
-                <div className="loading">Loading graph...</div>
-              ) : error ? (
-                <div className="error">{error}</div>
-              ) : (
-                <img
-                  src={`data:image/png;base64,${timeData}`}
-                  alt="Time of Day Theft Analysis"
-                  className="graph-image"
-                />
-              )}
+            <img
+              src="/images/thefts_by_time.png"
+              alt="Bicycle Thefts Over Time"
+              className="graph-image"
+              />
+              
             </div>
           </div>
         </div>
-        <div className="divider" style={{ marginTop: "65px" }}></div>
 
         {/* Card 5 */}
         <div className="card-section">
@@ -286,17 +278,11 @@ const Home = () => {
           </div>
           <div className="dashboard-card">
             <div className="graph-section">
-              {loading ? (
-                <div className="loading">Loading graph...</div>
-              ) : error ? (
-                <div className="error">{error}</div>
-              ) : (
-                <img
-                  src={`data:image/png;base64,${valueData}`}
-                  alt="Bike Value Analysis"
-                  className="graph-image"
-                />
-              )}
+            <img
+              src="/images/thefts_by_value.png"
+              alt="Bicycle Thefts Over Time"
+              className="graph-image"
+              />
             </div>
             <div className="description-section">
               <h2>Value Distribution</h2>
@@ -330,7 +316,6 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="divider" style={{ marginTop: "65px" }}></div>
       </div>
     </div>
   );

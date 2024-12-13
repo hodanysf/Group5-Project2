@@ -21,9 +21,9 @@ const AboutUs = () => {
       image: "https://via.placeholder.com/200x200",
     },
     {
-      id: "ID-004",
-      name: "Hodan",
-      image: "https://via.placeholder.com/200x200",
+      id: "301226634",
+      name: "Hodan A. Yusuf",
+      image: "/images/headshot.JPEG",
     },
     {
       id: "301321662",
@@ -34,17 +34,21 @@ const AboutUs = () => {
 
   return (
     <div className="about-us">
-      <div className="team-intro">
-  <p>
-    We are a dedicated team of professionals committed to 
-    making a difference in the world through technology and 
-    innovation. Meet our passionate members!
-  </p>
-</div>
+
       <div className="about-us-header">
         <h1>Our Team</h1>
-        <div className="divider"></div>
       </div>
+
+      <div className="team-intro">
+        <p
+        
+        style={{
+          marginTop:"-40px"
+        }}>
+    We are a dedicated team of professionals committed to 
+    making a difference in the world through technology and 
+    innovation. 
+    </p></div>
 
       <div className="cards-container">
         {cards.map((card) => (
