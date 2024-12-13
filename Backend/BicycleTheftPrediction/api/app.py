@@ -318,7 +318,7 @@ def seasonal_analysis():
         df = df[df['OCC_YEAR'] >= 2014]
 
         #map seasons to show names, on the graph  instead of, 0,1,2,3
-        season_mapping = {0: 'Winter', 1: 'Spring', 2: 'Summer', 3: 'Fall'}
+        season_mapping = {0: 'Fall', 1: 'Spring', 2: 'Summer', 3: 'Winter'}
         df['SEASON'] = df['SEASON'].map(season_mapping)
 
         # Calculate seasonal statistics
