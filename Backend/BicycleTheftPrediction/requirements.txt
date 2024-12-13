@@ -10,3 +10,6 @@ flask-restx>=1.1.0
 flask-cors==4.0.0
 joblib>=1.0.1
 requests>=2.26.0
+shapely>=1.8.0
+rtree>=0.9.7
+pyproj>=3.2.1
