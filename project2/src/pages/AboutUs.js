@@ -1,6 +1,8 @@
 import React from "react";
 import "./AboutUs.css";
 
+
+
 const AboutUs = () => {
   const cards = [
     {
@@ -24,14 +26,21 @@ const AboutUs = () => {
       image: "https://via.placeholder.com/200x200",
     },
     {
-      id: "ID-005",
-      name: "Nabantia",
-      image: "https://via.placeholder.com/200x200",
+      id: "301321662",
+      name: "Nabanita Saha",
+      image: "/images/Nabanita.jpg",
     },
   ];
 
   return (
     <div className="about-us">
+      <div className="team-intro">
+  <p>
+    We are a dedicated team of professionals committed to 
+    making a difference in the world through technology and 
+    innovation. Meet our passionate members!
+  </p>
+</div>
       <div className="about-us-header">
         <h1>Our Team</h1>
         <div className="divider"></div>
