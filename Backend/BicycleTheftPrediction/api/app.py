@@ -211,38 +211,38 @@ def thefts_over_time():
         growth_rate = ((latest_year_thefts - first_year_thefts) / first_year_thefts) * 100
         
         # Create the plot with improved styling
-        plt.style.use('seaborn-v0_8-dark')
-        plt.figure(figsize=(12, 6))
-        plt.xticks(fontsize=18)
-        plt.yticks(fontsize=18)
+    #    plt.style.use('seaborn-v0_8-dark')
+     #   plt.figure(figsize=(12, 6))
+      #  plt.xticks(fontsize=18)
+    #    plt.yticks(fontsize=18)
         
         # Create the plot
-        ax = theft_counts.plot(kind='bar', color='#3498db')
+    #    ax = theft_counts.plot(kind='bar', color='#3498db')
         
         # Customize the plot
-        plt.title('Number of Bicycle Thefts by Year', fontsize=38, pad=20)
-        plt.xlabel('Year', fontsize=32)
-        plt.ylabel('Number of Thefts', fontsize=32)
+    #    plt.title('Number of Bicycle Thefts by Year', fontsize=38, pad=20)
+    #    plt.xlabel('Year', fontsize=32)
+    #    plt.ylabel('Number of Thefts', fontsize=32)
         
         # Add value labels on top of each bar
-        for i, v in enumerate(theft_counts):
-            ax.text(i, v, str(v), ha='center', va='bottom')
+    #    for i, v in enumerate(theft_counts):
+    #        ax.text(i, v, str(v), ha='center', va='bottom')
         
         # Adjust layout to prevent label cutoff
-        plt.tight_layout()
+     #   plt.tight_layout()
         
         # Save plot to bytes buffer
-        buffer = io.BytesIO()
-        plt.savefig(buffer, format='png', dpi=300, bbox_inches='tight')
-        buffer.seek(0)
-        plt.close()
+    #    buffer = io.BytesIO()
+     #   plt.savefig(buffer, format='png', dpi=300, bbox_inches='tight')
+    #    buffer.seek(0)
+    #    plt.close()
         
         # Encode the image
-        image_base64 = base64.b64encode(buffer.getvalue()).decode()
+     #   image_base64 = base64.b64encode(buffer.getvalue()).decode()
 
         df = df.to_json()
         return jsonify({
-            'image': image_base64,
+            # 'image': image_base64,
             'metrics': {
                 'total_thefts': total_thefts,
                 'growth_rate': round(growth_rate, 1),
@@ -271,36 +271,36 @@ def return_rate():
         }).round(1)
 
         # Create the plot
-        plt.style.use('seaborn-v0_8-dark')
-        plt.figure(figsize=(12, 6))
-        plt.xticks(fontsize=18)
-        plt.yticks(fontsize=18)
+    #    plt.style.use('seaborn-v0_8-dark')
+    #    plt.figure(figsize=(12, 6))
+    #    plt.xticks(fontsize=18)
+    #    plt.yticks(fontsize=18)
         
         # Create the plot
-        ax = yearly_stats.plot(kind='bar', color='#2ecc71', legend=False)
+     #   ax = yearly_stats.plot(kind='bar', color='#2ecc71', legend=False)
         
         # Customize the plot
-        plt.title('Bicycle Return Rate by Year', fontsize=36, pad=20)
-        plt.xlabel('Year', fontsize=24)
-        plt.ylabel('Return Rate (%)', fontsize=24)
+    #    plt.title('Bicycle Return Rate by Year', fontsize=36, pad=20)
+    #    plt.xlabel('Year', fontsize=24)
+     #   plt.ylabel('Return Rate (%)', fontsize=24)
         
         # Add value labels on top of each bar
-        for i, v in enumerate(yearly_stats['STATUS']):
-            ax.text(i, v, f'{v:.1f}%', ha='center', va='bottom')
+    #    for i, v in enumerate(yearly_stats['STATUS']):
+    #        ax.text(i, v, f'{v:.1f}%', ha='center', va='bottom')
         
-        plt.tight_layout()
+    #    plt.tight_layout()
         
         # Save plot to bytes buffer
-        buffer = io.BytesIO()
-        plt.savefig(buffer, format='png', dpi=300, bbox_inches='tight')
-        buffer.seek(0)
-        plt.close()
+    #    buffer = io.BytesIO()
+    #    plt.savefig(buffer, format='png', dpi=300, bbox_inches='tight')
+    #    buffer.seek(0)
+    #    plt.close()
         
         # Encode the image
-        image_base64 = base64.b64encode(buffer.getvalue()).decode()
+      #  image_base64 = base64.b64encode(buffer.getvalue()).decode()
 
         return jsonify({
-            'image': image_base64,
+            # 'image': image_base64,
             'metrics': {
                 'total_bikes': int(total_bikes),
                 'total_recovered': int(recovered_bikes),
@@ -335,39 +335,39 @@ def seasonal_analysis():
         plt.figure(figsize=(12, 6))
         
         # Create bar plot
-        colors = ['#3498db', '#e74c3c', '#2ecc71', '#f1c40f']
-        ax = seasonal_stats.plot(kind='bar', color=colors)
+    #    colors = ['#3498db', '#e74c3c', '#2ecc71', '#f1c40f']
+    #    ax = seasonal_stats.plot(kind='bar', color=colors)
         
         # Set y-axis limit to 20,000
-        plt.ylim(0, 20000)
+   #     plt.ylim(0, 20000)
         
         # Customize the plot
-        plt.title('Bicycle Thefts by Season', fontsize=36, pad=20)
-        plt.xlabel('Season', fontsize=24)
-        plt.ylabel('Number of Thefts', fontsize=24)
-        plt.xticks(fontsize=18)
-        plt.yticks(fontsize=18)
+     #   plt.title('Bicycle Thefts by Season', fontsize=36, pad=20)
+     #   plt.xlabel('Season', fontsize=24)
+     #   plt.ylabel('Number of Thefts', fontsize=24)
+     #   plt.xticks(fontsize=18)
+     #   plt.yticks(fontsize=18)
         
         # Add value labels on top of each bar
-        for i, v in enumerate(seasonal_stats):
-            percentage = seasonal_percentages[seasonal_stats.index[i]]
-            ax.text(i, v, f'{v}\n({percentage}%)', 
-                   ha='center', va='bottom', fontsize=12)
+     #   for i, v in enumerate(seasonal_stats):
+     #       percentage = seasonal_percentages[seasonal_stats.index[i]]
+     #       ax.text(i, v, f'{v}\n({percentage}%)', 
+     #              ha='center', va='bottom', fontsize=12)
         
-        plt.tight_layout()
+      #  plt.tight_layout()
         
         # Save plot to bytes buffer
-        buffer = io.BytesIO()
-        plt.savefig(buffer, format='png', dpi=300, bbox_inches='tight')
-        buffer.seek(0)
-        plt.close()
+   #     buffer = io.BytesIO()
+   #     plt.savefig(buffer, format='png', dpi=300, bbox_inches='tight')
+   #     buffer.seek(0)
+   #     plt.close()
         
         # Encode the image
-        image_base64 = base64.b64encode(buffer.getvalue()).decode()
+    #    image_base64 = base64.b64encode(buffer.getvalue()).decode()
 
         df = df.to_json()
         return jsonify({
-            'image': image_base64,
+            # 'image': image_base64,
             'metrics': {
                 'peak_season': str(peak_season),
                 'peak_percentage': float(peak_season_percentage),
@@ -414,39 +414,39 @@ def time_analysis():
         peak_percentage = time_percentages[peak_period]
         
         # Create the plot
-        plt.style.use('seaborn-v0_8-dark')
-        plt.figure(figsize=(12, 6))
+   #     plt.style.use('seaborn-v0_8-dark')
+    #    plt.figure(figsize=(12, 6))
         
         # Create bar plot with custom colors
-        colors = ['#f39c12', '#e74c3c', '#9b59b6', '#2c3e50']
-        ax = time_stats.plot(kind='bar', color=colors, legend=False)
+      #  colors = ['#f39c12', '#e74c3c', '#9b59b6', '#2c3e50']
+     #   ax = time_stats.plot(kind='bar', color=colors, legend=False)
         
         # Customize the plot
-        plt.title('Bicycle Thefts by Time of Day', fontsize=36, pad=20)
-        plt.xlabel('Time Period', fontsize=24)
-        plt.ylabel('Number of Thefts', fontsize=24)
-        plt.xticks(fontsize=18, rotation=45)
-        plt.yticks(fontsize=18)
+     #   plt.title('Bicycle Thefts by Time of Day', fontsize=36, pad=20)
+     #   plt.xlabel('Time Period', fontsize=24)
+     #   plt.ylabel('Number of Thefts', fontsize=24)
+     #   plt.xticks(fontsize=18, rotation=45)
+     #   plt.yticks(fontsize=18)
         
         # Add value labels on top of each bar
-        for i, v in enumerate(time_stats):
-            percentage = time_percentages[time_stats.index[i]]
-            ax.text(i, v, f'{v}\n({percentage}%)', 
-                   ha='center', va='bottom', fontsize=12)
+     #   for i, v in enumerate(time_stats):
+     #       percentage = time_percentages[time_stats.index[i]]
+      #      ax.text(i, v, f'{v}\n({percentage}%)', 
+      #             ha='center', va='bottom', fontsize=12)
         
         plt.tight_layout()
         
         # Save plot to bytes buffer
-        buffer = io.BytesIO()
-        plt.savefig(buffer, format='png', dpi=300, bbox_inches='tight')
-        buffer.seek(0)
-        plt.close()
+     #   buffer = io.BytesIO()
+    #    plt.savefig(buffer, format='png', dpi=300, bbox_inches='tight')
+     #   buffer.seek(0)
+     #   plt.close()
         
         # Encode the image
-        image_base64 = base64.b64encode(buffer.getvalue()).decode()
+    #    image_base64 = base64.b64encode(buffer.getvalue()).decode()
         df = df.to_json()
         return jsonify({
-            'image': image_base64,
+            # 'image': image_base64,
             'metrics': {
                 'peak_period': peak_period,
                 'peak_percentage': float(peak_percentage),
@@ -484,39 +484,39 @@ def value_analysis():
         most_common_percentage = value_percentages[most_common_range]
         
         # Create the plot
-        plt.style.use('seaborn-v0_8-dark')
-        plt.figure(figsize=(12, 6))
+  #      plt.style.use('seaborn-v0_8-dark')
+  #      plt.figure(figsize=(12, 6))
         
         # Create bar plot with custom colors
-        colors = ['#3498db', '#2ecc71', '#e74c3c', '#f1c40f']
-        ax = value_stats.plot(kind='bar', color=colors, legend=False)
+   #     colors = ['#3498db', '#2ecc71', '#e74c3c', '#f1c40f']
+   #     ax = value_stats.plot(kind='bar', color=colors, legend=False)
         
         # Customize the plot
-        plt.title('Bicycle Thefts by Value Range', fontsize=36, pad=20)
-        plt.xlabel('Value Range', fontsize=24)
-        plt.ylabel('Number of Thefts', fontsize=24)
-        plt.xticks(fontsize=18, rotation=45)
-        plt.yticks(fontsize=18)
+    #    plt.title('Bicycle Thefts by Value Range', fontsize=36, pad=20)
+   #     plt.xlabel('Value Range', fontsize=24)
+    #    plt.ylabel('Number of Thefts', fontsize=24)
+   #     plt.xticks(fontsize=18, rotation=45)
+   #     plt.yticks(fontsize=18)
         
         # Add value labels on top of each bar
-        for i, v in enumerate(value_stats):
-            percentage = value_percentages[value_stats.index[i]]
-            ax.text(i, v, f'{v}\n({percentage}%)', 
-                   ha='center', va='bottom', fontsize=12)
+    #    for i, v in enumerate(value_stats):
+    #        percentage = value_percentages[value_stats.index[i]]
+    #        ax.text(i, v, f'{v}\n({percentage}%)', 
+    #               ha='center', va='bottom', fontsize=12)
         
-        plt.tight_layout()
+    #    plt.tight_layout()
         
         # Save plot to bytes buffer
-        buffer = io.BytesIO()
-        plt.savefig(buffer, format='png', dpi=300, bbox_inches='tight')
-        buffer.seek(0)
-        plt.close()
+    #    buffer = io.BytesIO()
+    #    plt.savefig(buffer, format='png', dpi=300, bbox_inches='tight')
+    #    buffer.seek(0)
+    #    plt.close()
         
         # Encode the image
-        image_base64 = base64.b64encode(buffer.getvalue()).decode()
+        #image_base64 = base64.b64encode(buffer.getvalue()).decode()
         df = df.to_json()
         return jsonify({
-            'image': image_base64,
+            # 'image': image_base64,
             'metrics': {
                 'average_cost': round(avg_cost, 2),
                 'most_common_range': most_common_range,
