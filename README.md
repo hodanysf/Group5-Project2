@@ -1,6 +1,8 @@
-# Bicycle Theft Prediction API
+# COMP 309-403 Group Project #2
 
-An advanced machine learning API that predicts whether a stolen bicycle is likely to be recovered or remain stolen, based on historical bicycle theft data.
+## Bicycle Theft Prediction API & Frontend
+
+An advanced machine learning API that predicts whether a stolen bicycle is likely to be recovered or remain stolen, based on historical bicycle theft data. View visualizations and predictions on the frontend against data. Enter your own bike data to see predictions.
 
 ## Features
 
@@ -12,11 +14,15 @@ An advanced machine learning API that predicts whether a stolen bicycle is likel
 ## API Endpoints
 
 ### 1. Prediction Endpoint (`/predict`)
+
 Make predictions about bicycle theft outcomes:
+
 ```bash
 POST /predict
 ```
+
 Required fields:
+
 - `BIKE_TYPE`: Type of bicycle (REGULAR, MOUNTAIN, or RACING)
 - `PREMISES_TYPE`: Type of premises where incident occurred
 - `LOCATION_TYPE`: Type of location
@@ -29,6 +35,7 @@ Required fields:
 - `NEIGHBOURHOOD_140`: Neighborhood name
 
 Optional fields:
+
 - `BIKE_MAKE`: Make of the bicycle
 - `BIKE_MODEL`: Model of the bicycle
 - `BIKE_SPEED`: Number of speeds
@@ -36,35 +43,80 @@ Optional fields:
 - `BIKE_COST`: Cost of the bicycle
 
 ### 2. Neighborhood Lookup (`/neighbourhood`)
+
 Get neighborhood information from coordinates:
+
 ```bash
 POST /neighbourhood
 ```
+
 Required fields:
+
 - `latitude`: Latitude of the location
 - `longitude`: Longitude of the location
 
 ### 3. Field Options (`/options`)
+
 Get all valid options for input fields:
+
 ```bash
 GET /options
 ```
 
+### 4. Neighborhood Lookup (`/api/thefts-over-time`)
+
+### 5. Neighborhood Lookup (`/api/return-rate`)
+
+### 6. Neighborhood Lookup (`/api/seasonal-analysis`)
+
+### 7. Neighborhood Lookup (`/api/time-analysis`)
+
+### 8. Neighborhood Lookup (`/api/value-analysis`)
+
+### 9. Neighborhood Lookup (`/api/model-metrics`)
+
+##Webpage Endpoints
+
+### 1. Home (`/`)
+
+### 2. Prediction (`/predict`)
+
+### 3. Model Dashboard (`/model-performance`)
+
+### 4. About (`/about`)
+
 ## Installation
 
 1. Clone the repository:
+
 ```bash
-git clone https://github.com/Mindful-Developer/BicycleTheftPrediction.git
-cd BicycleTheftPrediction
+git clone git@github.com:hodanysf/Group5-Project2.git
+
 ```
 
+###Frontend
+
+1. cd Frontend
+
+2. npm install
+
+3. npm start
+
+4. Open http://localhost:3000 in your browser
+
+###Backend
+
+1. cd BicycleTheftPrediction
+
 2. Create a virtual environment (recommended):
+
 ```bash
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
 3. Install dependencies:
+
 ```bash
 pip install -r requirements.txt
 ```
@@ -88,17 +140,20 @@ pip install -r requirements.txt
 ## Usage
 
 1. Start the API server:
+
 ```bash
 cd api/
 python -m flask --app app.py run
 ```
 
 2. Access the API documentation:
+
 ```
 http://localhost:5000/docs
 ```
 
 3. Make a prediction:
+
 ```python
 import requests
 
@@ -126,3 +181,5 @@ print(response.json())
 - Chris Busse
 - Gabriel Normand
 - Nabanita Saha
+
+ReadME based on original by Mindful-Developer
