@@ -63,7 +63,7 @@ const Home = () => {
       </div>
 
       <div className="dashboard-container">
-        {/* Card 1 */}
+        {/* Card 1 | Overall Bicycle Thefts From 2014-2018 */}
         <div className="first-card">
           <div className="card-header">
             <h3 className="card-title">
@@ -116,7 +116,7 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Card 2 */}
+        {/* Card 2 | Bike Return Rate */}
         <div className="card-section">
           <div className="card-header" style={{ marginTop: "60px" }}>
             <h3 className="card-title">Bike Return Rate</h3>
@@ -159,7 +159,7 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Card 3 */}
+        {/* Card 3 | Seasons and Bike Thefts */}
         <div className="card-section">
           <div className="card-header" style={{ marginTop: "60px" }}>
             <h3 className="card-title">Seasons and Bike Thefts</h3>
@@ -208,7 +208,7 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Card 4 */}
+        {/* Card 4 | Time of Day Analysis */}
         <div className="card-section">
           <div className="card-header" style={{ marginTop: "60px" }}>
             <h3 className="card-title">Time of Day Analysis</h3>
@@ -254,7 +254,7 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Card 5 */}
+        {/* Card 5 | Bike Value Analysis */}
         <div className="card-section">
           <div className="card-header" style={{ marginTop: "60px" }}>
             <h3 className="card-title">Bike Value Analysis</h3>
