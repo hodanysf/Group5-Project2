@@ -57,7 +57,7 @@
 }
 
 .dashboard-card {
-  background: white;
+  background: rgb(254, 240, 215);
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   display: flex;
